@@ -25,4 +25,6 @@ jobs:
     - name: run cmake
       run: cd build && cmake .. -GNinja
     - name: run tests
+      env:
+        HARNESS_VERBOSE: 1
       run: cd build && ninja test
