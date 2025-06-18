@@ -12,6 +12,9 @@ on: [pull_request, push]
 jobs:
   check_tests:
     runs-on: ${{ github.server_url == 'https://github.com' && 'ubuntu-latest' || 'ubuntu-22.04-self-hosted' }}
+    env:
+      CFLAGS: "-ggdb -fsanitize=address"
+      LDFLAGS: "-fsanitize=address"
     steps:
     - name: install tools
       run: |
