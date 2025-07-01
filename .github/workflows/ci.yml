@@ -9,12 +9,18 @@ name: GitHub CI
 
 on: [pull_request, push]
 
-jobs:
+jobs:        
   check_tests:
-    runs-on: ${{ github.server_url == 'https://github.com' && 'ubuntu-latest' || 'ubuntu-22.04-self-hosted' }}
+    strategy:
+      matrix:
+        cc: [gcc, clang]
+
+    runs-on: 'ubuntu-latest'
     env:
-      CFLAGS: "-ggdb -fsanitize=address"
-      LDFLAGS: "-fsanitize=address"
+      CC: ${{ matrix.cc }}
+    #env:
+    #  CFLAGS: "-ggdb -fsanitize=address"
+    #  LDFLAGS: "-fsanitize=address"
     steps:
     - name: install tools
       run: |
