@@ -22,7 +22,7 @@ jobs:
     env:
       CC: ${{ matrix.cc }}
       CXX: ${{ matrix.cxx }}
-      CFLAGS: -Werror
+      CMAKE_C_FLAGS: -Werror
     steps:
     - name: install tools
       run: |
