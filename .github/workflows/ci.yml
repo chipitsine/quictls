@@ -18,9 +18,11 @@ jobs:
           { cc: gcc, cxx: g++ },
           { cc: clang, cxx: clang++ }
         ]
+        fail-fast: false
     env:
       CC: ${{ matrix.cc }}
       CXX: ${{ matrix.cxx }}
+      CFLAGS: -Werror
     steps:
     - name: install tools
       run: |
