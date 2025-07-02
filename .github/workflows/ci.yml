@@ -18,7 +18,7 @@ jobs:
           { cc: gcc, cxx: g++ },
           { cc: clang, cxx: clang++ }
         ]
-        fail-fast: false
+      fail-fast: false
     env:
       CC: ${{ matrix.cc }}
       CXX: ${{ matrix.cxx }}
