@@ -22,7 +22,6 @@ jobs:
     env:
       CC: ${{ matrix.cc }}
       CXX: ${{ matrix.cxx }}
-      CMAKE_C_FLAGS: -Werror
     steps:
     - name: install tools
       run: |
@@ -34,6 +33,6 @@ jobs:
     - name: make build dir
       run: mkdir build
     - name: run cmake
-      run: cd build && cmake .. -GNinja
+      run: cd build && cmake -DCMAKE_C_FLAGS=-Werror -DCMAKE_CXX_FLAGS=-Werror .. -GNinja 
     - name: run tests
       run: cd build && ninja test
